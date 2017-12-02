@@ -2,15 +2,18 @@ using System;
 using UnityEngine;
 using Zenject;
 using System.Collections.Generic;
+using TMPro;
 
 public class UIInstaller : MonoInstaller<UIInstaller>
 {
     public ResourceCollectorInfo[] ResourceCollectors;
     public GameObject ResourcesButtonContainer;
     public GameObject ButtonPrefab;
+    public GameObject GoldTextObj; //WHERE IS THIS FIELD REEEE
 
     public override void InstallBindings()
     {
+        Container.BindInstance(GoldTextObj.GetComponent<TextMeshProUGUI>()).WithId("GoldText");
         Container.BindInstance(ResourceCollectors);
         Container.BindInstance(ButtonPrefab).WithId("ButtonPrefab");
         Container.BindInstance(ResourcesButtonContainer).WithId("ResourcesListContainer");

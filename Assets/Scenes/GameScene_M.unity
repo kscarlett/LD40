@@ -274,6 +274,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &366222930 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1648382843741120, guid: b84a8c0d46fae1d4daf3fa632741fd41,
+    type: 2}
+  m_PrefabInternal: {fileID: 263075923}
 --- !u!1 &462046743
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Buttons: []
+  GoldText: {fileID: 0}
 --- !u!1 &801798475
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,21 +999,27 @@ MonoBehaviour:
   - Name: Filthy Peasant
     Cost: 1
     GoldPerSecond: 1
+    UnlockThreshhold: 10
   - Name: Terribad Merchants
     Cost: 2
     GoldPerSecond: 2
+    UnlockThreshhold: 20
   - Name: Basic Mine
     Cost: 3
     GoldPerSecond: 3
+    UnlockThreshhold: 30
   - Name: Criminal Labour
     Cost: 4
     GoldPerSecond: 4
+    UnlockThreshhold: 40
   - Name: Shaft Mines
     Cost: 5
     GoldPerSecond: 5
+    UnlockThreshhold: 50
   ResourcesButtonContainer: {fileID: 1874499503}
   ButtonPrefab: {fileID: 1074702326895540, guid: c59d7400d4977684491fe3de48b1884e,
     type: 2}
+  GoldTextObj: {fileID: 366222930}
 --- !u!114 &1257610374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,7 +1422,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 10}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874499505
 MonoBehaviour:

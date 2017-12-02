@@ -1,30 +1,71 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using UnityEngine;
 using Zenject;
+using UniRx;
+using UniRx.Triggers;
 
 public class CastleBehaviour : MonoBehaviour
 {
-    private Dictionary<ResourceButtonInfo, int> _resourceButtonCounters;
+    private Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>> _resourceButtonCounters;
+    private UIBehaviour _ui;
+    private ReactiveProperty<double> _gold;
+    private DateTimeOffset _lastAdded;
 
     [Inject]
     private void Construct(UIBehaviour ui)
     {
-        foreach (ResourceButtonInfo btn in ui.Buttons)
+        _resourceButtonCounters = new Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>>();
+        _ui = ui;
+        foreach (ResourceButtonInfo btn in _ui.Buttons)
         {
-            _resourceButtonCounters.Add(btn, 0);
+            _resourceButtonCounters.Add(btn, new ReactiveProperty<ulong>(0));
         }
     }
 
     // Use this for initialization
     void Start()
     {
+        _gold = new ReactiveProperty<double>(0);
+        _lastAdded = DateTimeOffset.Now;
 
+        this.UpdateAsObservable()
+            .Timestamp()
+            .Where(x => x.Timestamp >= _lastAdded.AddSeconds(1))
+            .Subscribe(x =>
+            {
+                foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
+                {
+                    _gold.Value += _resourceButtonCounters[btn].Value * btn.Info.GoldPerSecond;
+                }
+                _lastAdded = x.Timestamp;
+            });
+
+        _gold.Subscribe(d => _ui.GoldText.text = d.ToString(CultureInfo.CurrentCulture));
+
+        foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
+        {
+            _gold.Where(l => l >= btn.Info.UnlockThreshhold).Subscribe(_ => btn.gameObject.SetActive(true));
+        }
+
+        for (var i = 0; i < _resourceButtonCounters.Keys.Count; i++)
+        {
+            ResourceButtonInfo button = _resourceButtonCounters.Keys.ToList()[i];
+            button.Click += Button_Click;
+            if (i > 0)
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Button_Click(object sender, EventArgs e)
     {
-
+        _resourceButtonCounters[(ResourceButtonInfo) sender].Value += 1;
     }
 }

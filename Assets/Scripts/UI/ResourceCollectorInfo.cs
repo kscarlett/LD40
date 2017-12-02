@@ -9,5 +9,6 @@ public class ResourceCollectorInfo
     public string Name;
     public float Cost;
     public float GoldPerSecond;
+    public ulong UnlockThreshhold;
 }
 

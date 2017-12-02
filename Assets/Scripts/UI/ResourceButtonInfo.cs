@@ -30,5 +30,6 @@ public class ResourceButtonInfo : MonoBehaviour
         });
         Amount.Subscribe(i => transform.Find("Owned number text").GetComponent<TextMeshProUGUI>().text = i.ToString());
         transform.Find("Price text").GetComponent<TextMeshProUGUI>().text = Info.Cost.ToString(CultureInfo.CurrentCulture);
+        transform.Find("Name text").GetComponent<TextMeshProUGUI>().text = Info.Name;
     }
 }
