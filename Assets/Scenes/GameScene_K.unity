@@ -5090,6 +5090,11 @@ Prefab:
       propertyPath: Info.Cost
       value: 2300145
       objectReference: {fileID: 0}
+    - target: {fileID: 114768518299377204, guid: c59d7400d4977684491fe3de48b1884e,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c59d7400d4977684491fe3de48b1884e, type: 2}
   m_IsPrefabParent: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Collider))]
-public class EnemyBase : MonoBehaviour {
+public class AIBase : MonoBehaviour {
 
     //TODO: inject
     private Transform _targetTransform;
