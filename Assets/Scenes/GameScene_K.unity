@@ -3721,6 +3721,7 @@ MonoBehaviour:
     _spawnChance: 35
   - _prefab: {fileID: 100002, guid: 9e7fc905f82930640ad671f3f75b5174, type: 3}
     _spawnChance: 2.1
+  _difficulty: 1
 --- !u!1 &1425286040
 GameObject:
   m_ObjectHideFlags: 0

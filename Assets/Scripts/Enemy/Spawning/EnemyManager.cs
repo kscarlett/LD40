@@ -10,26 +10,27 @@ public class EnemyManager : MonoBehaviour
 {
     //TODO: inject enemyspawner
 
-
+    public float Difficulty;
     [SerializeField] private List<SpawnableEnemy> _enemies;
-    [SerializeField] private float _difficulty;
-
+    
     private float _totalChance;
     private EnemySpawner _spawner;
+    private DateTimeOffset _lastAdded;
 
 	void Start ()
 	{
 	    _spawner = GetComponent<EnemySpawner>();
 
-	    /*this.UpdateAsObservable()
-            .Delay(TimeSpan.FromSeconds(_difficulty))
-            */ //Call the timer every _difficulty seconds
+	    _lastAdded = DateTimeOffset.Now;
 
-    }
-
-    void Update()
-    {
-        SpawnEnemy();
+	    this.UpdateAsObservable()
+	        .Timestamp()
+	        .Where(x => x.Timestamp >= _lastAdded.AddSeconds(Difficulty))
+	        .Subscribe(x =>
+	        {
+	            SpawnEnemy();
+	            _lastAdded = x.Timestamp;
+	        });
     }
 
     private void SpawnEnemy()
