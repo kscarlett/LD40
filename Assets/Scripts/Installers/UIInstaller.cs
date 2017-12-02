@@ -8,12 +8,14 @@ public class UIInstaller : MonoInstaller<UIInstaller>
     public ResourceCollectorInfo[] ResourceCollectors;
     public GameObject ResourcesButtonContainer;
     public GameObject ButtonPrefab;
+
     public override void InstallBindings()
     {
         Container.BindInstance(ResourceCollectors);
         Container.BindInstance(ButtonPrefab).WithId("ButtonPrefab");
         Container.BindInstance(ResourcesButtonContainer).WithId("ResourcesListContainer");
         Container.Bind<List<ResourceButtonInfo>>().FromMethod(ConstructButtons);
+        Container.Bind<UIBehaviour>().FromComponentInHierarchy();
     }
 
     List<ResourceButtonInfo> ConstructButtons(InjectContext context)

@@ -7,14 +7,19 @@ using UnityEngine.Events;
 
 public class UIBehaviour : MonoBehaviour
 {
-    private List<ResourceButtonInfo> _buttons;
+    public List<ResourceButtonInfo> Buttons;
 
     // Use this for initialization
     void Start()
     {
-        foreach (ResourceButtonInfo button in _buttons)
+        for (var i = 0; i < Buttons.Count; i++)
         {
+            ResourceButtonInfo button = Buttons[i];
             button.Click += Button_Click;
+            if (i > 0)
+            {
+                button.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -26,7 +31,7 @@ public class UIBehaviour : MonoBehaviour
     [Inject]
     private void Construct(List<ResourceButtonInfo> buttons)
     {
-        _buttons = buttons;
+        Buttons = buttons;
     }
 
     // Update is called once per frame
