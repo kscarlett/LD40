@@ -13,6 +13,7 @@ public class ResourceButtonInfo : MonoBehaviour
     public ResourceCollectorInfo Info;
     public event EventHandler Click;
     public ReactiveProperty<int> Amount;
+    public ReactiveProperty<float> Cost;
 
     [Inject]
     private void Construct(ResourceCollectorInfo info)
@@ -22,6 +23,7 @@ public class ResourceButtonInfo : MonoBehaviour
 
     void Start()
     {
+        Cost = new ReactiveProperty<float>(Info.Cost);
         Amount = new ReactiveProperty<int>(0);
         GetComponent<Button>().onClick.AsObservable().Subscribe(_ =>
         {
@@ -29,7 +31,7 @@ public class ResourceButtonInfo : MonoBehaviour
             Amount.Value += 1;
         });
         Amount.Subscribe(i => transform.Find("Owned number text").GetComponent<TextMeshProUGUI>().text = i.ToString());
-        transform.Find("Price text").GetComponent<TextMeshProUGUI>().text = Info.Cost.ToString(CultureInfo.CurrentCulture);
+        Cost.Subscribe(i => transform.Find("Price text").GetComponent<TextMeshProUGUI>().text = i.ToString(CultureInfo.CurrentCulture));
         transform.Find("Name text").GetComponent<TextMeshProUGUI>().text = Info.Name;
     }
 }

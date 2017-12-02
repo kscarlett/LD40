@@ -135,16 +135,19 @@ public class CastleBehaviour : MonoBehaviour
         if (_gold.Value >= theBtn.Info.Cost)
         {
             _gold.Value -= theBtn.Info.Cost;
+            theBtn.Cost.Value += 1;
             _resourceButtonCounters[theBtn].Value += 1;
         }
 
     }
+
     private void UpgradeButton_Click(object sender, EventArgs e)
     {
         var theBtn = (UpgradeButtonInfo) sender;
         if (_gold.Value >= theBtn.Info.Cost)
         {
             _gold.Value -= theBtn.Info.Cost;
+            theBtn.Cost.Value += 1;
             _upgradeButtonCounters[theBtn].Value += 1;
         }
     }
