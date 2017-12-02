@@ -3,6 +3,7 @@ using UnityEngine;
 using Zenject;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIInstaller : MonoInstaller<UIInstaller>
 {
@@ -10,9 +11,11 @@ public class UIInstaller : MonoInstaller<UIInstaller>
     public GameObject ResourcesButtonContainer;
     public GameObject ButtonPrefab;
     public GameObject GoldTextObj; //WHERE IS THIS FIELD REEEE
+    public GameObject GoldButtonObj;
 
     public override void InstallBindings()
     {
+        Container.BindInstance(GoldButtonObj.GetComponent<Button>()).WithId("GoldClicker");
         Container.BindInstance(GoldTextObj.GetComponent<TextMeshProUGUI>()).WithId("GoldText");
         Container.BindInstance(ResourceCollectors);
         Container.BindInstance(ButtonPrefab).WithId("ButtonPrefab");

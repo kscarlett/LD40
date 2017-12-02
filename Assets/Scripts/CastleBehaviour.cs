@@ -37,14 +37,17 @@ public class CastleBehaviour : MonoBehaviour
             .Where(x => x.Timestamp >= _lastAdded.AddSeconds(1))
             .Subscribe(x =>
             {
-                foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
-                {
-                    _gold.Value += _resourceButtonCounters[btn].Value * btn.Info.GoldPerSecond;
-                }
+                AddGold();
                 _lastAdded = x.Timestamp;
             });
 
-        _gold.Subscribe(d => _ui.GoldText.text = d.ToString(CultureInfo.CurrentCulture));
+        _gold.Subscribe(d => _ui.GoldText.text = "Gold: " + d.ToString(CultureInfo.CurrentCulture));
+
+        _ui.GoldButton.onClick.AsObservable().Subscribe(_ =>
+        {
+            AddGold();
+            _gold.Value += 1;
+        });
 
         foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
         {
@@ -62,6 +65,14 @@ public class CastleBehaviour : MonoBehaviour
         }
 
         
+    }
+
+    private void AddGold()
+    {
+        foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
+        {
+            _gold.Value += _resourceButtonCounters[btn].Value * btn.Info.GoldPerSecond;
+        }
     }
 
     private void Button_Click(object sender, EventArgs e)
