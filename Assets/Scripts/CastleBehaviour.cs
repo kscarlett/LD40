@@ -7,6 +7,7 @@ using UnityEngine;
 using Zenject;
 using UniRx;
 using UniRx.Triggers;
+using UnityEditor;
 
 public class CastleBehaviour : MonoBehaviour
 {
@@ -104,10 +105,21 @@ public class CastleBehaviour : MonoBehaviour
 
     private void Button_Click(object sender, EventArgs e)
     {
-        _resourceButtonCounters[(ResourceButtonInfo) sender].Value += 1;
+        var theBtn = (ResourceButtonInfo) sender;
+        if (_gold.Value >= theBtn.Info.Cost)
+        {
+            _gold.Value -= theBtn.Info.Cost;
+            _resourceButtonCounters[theBtn].Value += 1;
+        }
+
     }
     private void UpgradeButton_Click(object sender, EventArgs e)
     {
-        _upgradeButtonCounters[(UpgradeButtonInfo)sender].Value += 1;
+        var theBtn = (UpgradeButtonInfo) sender;
+        if (_gold.Value >= theBtn.Info.Cost)
+        {
+            _gold.Value -= theBtn.Info.Cost;
+            _upgradeButtonCounters[theBtn].Value += 1;
+        }
     }
 }
