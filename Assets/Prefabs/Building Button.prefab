@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 222419020493245990}
   - component: {fileID: 114734642531407008}
   - component: {fileID: 114768518299377204}
+  - component: {fileID: 114791506001760784}
+  - component: {fileID: 114987889690639252}
   m_Layer: 5
   m_Name: Building Button
   m_TagString: Untagged
@@ -485,6 +487,40 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114791506001760784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074702326895540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 50
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &114987889690639252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074702326895540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9925c39c3cf5d84a8c3a8e44ec86b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InfoObject:
+    Name: 
+    Cost: 0
+    GoldPerSecond: 0
 --- !u!222 &222309659056358900
 CanvasRenderer:
   m_ObjectHideFlags: 1
