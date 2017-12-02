@@ -11,24 +11,32 @@ using UniRx.Triggers;
 public class CastleBehaviour : MonoBehaviour
 {
     private Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>> _resourceButtonCounters;
+    private Dictionary<UpgradeButtonInfo, ReactiveProperty<ulong>> _upgradeButtonCounters;
     private UIBehaviour _ui;
     private ReactiveProperty<double> _gold;
     private DateTimeOffset _lastAdded;
+    public int CastleLevel;
 
     [Inject]
     private void Construct(UIBehaviour ui)
     {
         _resourceButtonCounters = new Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>>();
+        _upgradeButtonCounters = new Dictionary<UpgradeButtonInfo, ReactiveProperty<ulong>>();
         _ui = ui;
         foreach (ResourceButtonInfo btn in _ui.Buttons)
         {
             _resourceButtonCounters.Add(btn, new ReactiveProperty<ulong>(0));
+        }
+        foreach (UpgradeButtonInfo btn in _ui.UpgradeButtons)
+        {
+            _upgradeButtonCounters.Add(btn, new ReactiveProperty<ulong>(0));
         }
     }
 
     // Use this for initialization
     void Start()
     {
+        CastleLevel = 1;
         _gold = new ReactiveProperty<double>(0);
         _lastAdded = DateTimeOffset.Now;
 
@@ -51,7 +59,19 @@ public class CastleBehaviour : MonoBehaviour
 
         foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
         {
-            _gold.Where(l => l >= btn.Info.UnlockThreshhold).Subscribe(_ => btn.gameObject.SetActive(true));
+            _gold.Where(l => l >= btn.Info.UnlockThreshhold).Subscribe(_ =>
+            {
+                btn.gameObject.SetActive(true);
+                CastleLevel += 1;
+            });
+        }
+
+        foreach (UpgradeButtonInfo btn in _upgradeButtonCounters.Keys)
+        {
+            _gold.Where(l => l >= btn.Info.UnlockThreshhold).Subscribe(_ =>
+            {
+                btn.gameObject.SetActive(true);
+            });
         }
 
         for (var i = 0; i < _resourceButtonCounters.Keys.Count; i++)
@@ -64,7 +84,14 @@ public class CastleBehaviour : MonoBehaviour
             }
         }
 
-        
+        for (var i = 0; i < _upgradeButtonCounters.Keys.Count; i++)
+        {
+            UpgradeButtonInfo button = _upgradeButtonCounters.Keys.ToList()[i];
+            button.Click += UpgradeButton_Click;
+            button.gameObject.SetActive(false);
+        }
+
+
     }
 
     private void AddGold()
@@ -78,5 +105,9 @@ public class CastleBehaviour : MonoBehaviour
     private void Button_Click(object sender, EventArgs e)
     {
         _resourceButtonCounters[(ResourceButtonInfo) sender].Value += 1;
+    }
+    private void UpgradeButton_Click(object sender, EventArgs e)
+    {
+        _upgradeButtonCounters[(UpgradeButtonInfo)sender].Value += 1;
     }
 }
