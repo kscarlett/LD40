@@ -8,6 +8,7 @@ using Zenject;
 using UniRx;
 using UniRx.Triggers;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class CastleBehaviour : MonoBehaviour
 {
@@ -50,7 +51,32 @@ public class CastleBehaviour : MonoBehaviour
                 _lastAdded = x.Timestamp;
             });
 
-        _gold.Subscribe(d => _ui.GoldText.text = "Gold: " + d.ToString(CultureInfo.CurrentCulture));
+        _gold.Subscribe(d =>
+        {
+            _ui.GoldText.text = "Gold: " + d.ToString(CultureInfo.CurrentCulture);
+            foreach (ResourceButtonInfo btnInfo in _resourceButtonCounters.Keys)
+            {
+                if (btnInfo.Info.Cost > _gold.Value)
+                {
+                    btnInfo.GetComponent<Button>().interactable = false;
+                }
+                else if (!btnInfo.GetComponent<Button>().interactable)
+                {
+                    btnInfo.GetComponent<Button>().interactable = true;
+                }
+            }
+            foreach (UpgradeButtonInfo btnInfo in _upgradeButtonCounters.Keys)
+            {
+                if (btnInfo.Info.Cost > _gold.Value)
+                {
+                    btnInfo.GetComponent<Button>().interactable = false;
+                }
+                else if (!btnInfo.GetComponent<Button>().interactable)
+                {
+                    btnInfo.GetComponent<Button>().interactable = true;
+                }
+            }
+        });
 
         _ui.GoldButton.onClick.AsObservable().Subscribe(_ =>
         {
