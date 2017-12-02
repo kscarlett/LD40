@@ -913,7 +913,7 @@ MonoBehaviour:
   ButtonPrefab: {fileID: 1074702326895540, guid: c59d7400d4977684491fe3de48b1884e,
     type: 2}
   GoldTextObj: {fileID: 366222930}
-  GoldButtonObj: {fileID: 0}
+  GoldButtonObj: {fileID: 2021308773}
 --- !u!114 &1257610374
 MonoBehaviour:
   m_ObjectHideFlags: 0
