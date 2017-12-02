@@ -8,19 +8,8 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [SerializeField] private int _spawnRadius;
-    [SerializeField] private GameObject _enemyPrefab;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		SpawnEnemy(_enemyPrefab);
-	}
-
-    private void SpawnEnemy(GameObject EnemyPrefabToSpawn)
+    public void SpawnEnemy(GameObject EnemyPrefabToSpawn)
     {
         var enemy = PrefabUtility.InstantiatePrefab(EnemyPrefabToSpawn) as GameObject;
 
