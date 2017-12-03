@@ -163,4 +163,9 @@ public class CastleBehaviour : MonoBehaviour
             _upgradeButtonCounters[theBtn].Value += 1;
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        _gold.Value -= damage;
+    }
 }
