@@ -744,7 +744,8 @@ Prefab:
       propertyPath: m_Animation
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11100000, guid: e2e3a9065897c35439a237ce95fb192c, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e2e3a9065897c35439a237ce95fb192c, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &179790695 stripped
