@@ -4604,7 +4604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1371416226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4641,7 +4641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738d33ef06ac0ba4ea640cb296eb372c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Difficulty: 1
+  Difficulty: 0.95
   _enemies:
   - _prefab: {fileID: 1321899991208732, guid: 4a0b27c42d6cc7c4da7786750dc58f8b, type: 2}
     _spawnChance: 65

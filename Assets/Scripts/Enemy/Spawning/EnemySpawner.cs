@@ -11,8 +11,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy(GameObject EnemyPrefabToSpawn)
     {
-        var enemy = PrefabUtility.InstantiatePrefab(EnemyPrefabToSpawn) as GameObject;
-
         var degrees = Random.Range(0, 361);
 
         var x = _spawnRadius * Mathf.Cos(degrees * Mathf.Deg2Rad);
@@ -23,6 +21,6 @@ public class EnemySpawner : MonoBehaviour
         if (Mathf.Abs(y) < 0.01f)
             y = 0;
 
-        enemy.transform.position = new Vector3(x, 0, y);
+        var enemy = Instantiate(EnemyPrefabToSpawn, new Vector3(x, 0, y), Quaternion.identity);
     }
 }
