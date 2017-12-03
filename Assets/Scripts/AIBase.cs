@@ -12,7 +12,6 @@ public class AIBase : MonoBehaviour, IDamageable
 {
     [SerializeField] private bool _animate;
 
-    //TODO: inject
     private CastleBehaviour _castle;
     private Transform _targetTransform;
 
@@ -102,5 +101,10 @@ public class AIBase : MonoBehaviour, IDamageable
             _currentEnemy.GetComponent<IDamageable>().TakeDamage(Damage);
             StopCoroutine("CheckForCancel");
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health.Value -= damage;
     }
 }
