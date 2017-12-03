@@ -9,7 +9,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine.UI;
 
-public class CastleBehaviour : MonoBehaviour
+public class CastleBehaviour : MonoBehaviour, IDamageable
 {
     private Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>> _resourceButtonCounters;
     private Dictionary<UpgradeButtonInfo, ReactiveProperty<ulong>> _upgradeButtonCounters;
