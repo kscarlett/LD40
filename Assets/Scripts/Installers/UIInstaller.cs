@@ -15,9 +15,11 @@ public class UIInstaller : MonoInstaller<UIInstaller>
     public GameObject UpgradeButtonPrefab;
     public GameObject GoldTextObj;
     public GameObject GoldButtonObj;
+    public GameObject MessageBoxObject;
 
     public override void InstallBindings()
     {
+        Container.BindInstance(MessageBoxObject).WithId("MessageBox");
         Container.BindInstance(GoldButtonObj.GetComponent<Button>()).WithId("GoldClicker");
         Container.BindInstance(GoldTextObj.GetComponent<TextMeshProUGUI>()).WithId("GoldText");
         Container.BindInstance(ResourceCollectors);

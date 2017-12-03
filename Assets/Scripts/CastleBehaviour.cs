@@ -17,7 +17,7 @@ public class CastleBehaviour : MonoBehaviour
     private UIBehaviour _ui;
     private ReactiveProperty<double> _gold;
     private DateTimeOffset _lastAdded;
-    public int CastleLevel;
+    public ReactiveProperty<int> CastleLevel;
 
     [Inject]
     private void Construct(UIBehaviour ui)
@@ -38,13 +38,13 @@ public class CastleBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        CastleLevel = 1;
+        CastleLevel = new ReactiveProperty<int>(1);
         _gold = new ReactiveProperty<double>(0);
         _lastAdded = DateTimeOffset.Now;
 
         this.UpdateAsObservable()
             .Timestamp()
-            .Where(x => x.Timestamp >= _lastAdded.AddSeconds(1))
+            .Where(x => x.Timestamp >= _lastAdded.AddSeconds(1) && Time.timeScale != 0)
             .Subscribe(x =>
             {
                 AddGold();
@@ -86,18 +86,22 @@ public class CastleBehaviour : MonoBehaviour
 
         foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
         {
-            _gold.Where(l => l >= btn.Info.UnlockThreshhold).Subscribe(_ =>
+            _gold.Where(l => l >= btn.Info.UnlockThreshhold && !btn.Info.HasRun).Subscribe(_ =>
             {
                 btn.gameObject.SetActive(true);
-                CastleLevel += 1;
+                _ui.ShowMessage(btn.Info.UnlockMessage);
+                CastleLevel.Value += 1;
+                btn.Info.HasRun = true;
             });
         }
 
         foreach (UpgradeButtonInfo btn in _upgradeButtonCounters.Keys)
         {
-            _gold.Where(l => l >= btn.Info.UnlockThreshhold).Subscribe(_ =>
+            _gold.Where(l => l >= btn.Info.UnlockThreshhold && !btn.Info.HasRun).Subscribe(_ =>
             {
                 btn.gameObject.SetActive(true);
+                btn.Info.HasRun = true;
+                _ui.ShowMessage(btn.Info.UnlockMessage);
             });
         }
 
@@ -135,16 +139,19 @@ public class CastleBehaviour : MonoBehaviour
         if (_gold.Value >= theBtn.Info.Cost)
         {
             _gold.Value -= theBtn.Info.Cost;
+            theBtn.Cost.Value += 1;
             _resourceButtonCounters[theBtn].Value += 1;
         }
 
     }
+
     private void UpgradeButton_Click(object sender, EventArgs e)
     {
         var theBtn = (UpgradeButtonInfo) sender;
         if (_gold.Value >= theBtn.Info.Cost)
         {
             _gold.Value -= theBtn.Info.Cost;
+            theBtn.Cost.Value += 1;
             _upgradeButtonCounters[theBtn].Value += 1;
         }
     }
