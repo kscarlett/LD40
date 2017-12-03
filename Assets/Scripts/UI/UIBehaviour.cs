@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class UIBehaviour : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class UIBehaviour : MonoBehaviour
     public Button GoldButton;
     private GameObject _messageBoxObject;
     private List<string> _messages;
+    private bool _isLost;
 
     [Inject]
     private void Construct(List<ResourceButtonInfo> buttons, List<UpgradeButtonInfo> upgradeButtons, [Inject(Id = "GoldText")] TextMeshProUGUI goldText, [Inject(Id = "GoldClicker")] Button goldButton, [Inject(Id = "MessageBox")] GameObject messageBoxObject)
@@ -41,10 +43,20 @@ public class UIBehaviour : MonoBehaviour
             ShowMessage(_messages.Last());
             _messages.Remove(_messages.Last());
         });
+        this.UpdateAsObservable().Where(_ => _messageBoxObject.activeInHierarchy && Time.timeScale == 0).Subscribe(x =>
+        {
+            Time.timeScale = 1;
+            if (_isLost)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        });
+        _isLost = false;
     }
 
-    public void ShowMessage(string message)
+    public void ShowMessage(string message, bool isLost = false)
     {
+        _isLost = isLost;
         if (_messageBoxObject.activeInHierarchy)
         {
             _messages.Add(message);

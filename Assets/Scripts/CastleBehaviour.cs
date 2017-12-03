@@ -7,7 +7,6 @@ using UnityEngine;
 using Zenject;
 using UniRx;
 using UniRx.Triggers;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class CastleBehaviour : MonoBehaviour
@@ -53,27 +52,36 @@ public class CastleBehaviour : MonoBehaviour
 
         _gold.Subscribe(d =>
         {
-            _ui.GoldText.text = "Gold: " + d.ToString(CultureInfo.CurrentCulture);
-            foreach (ResourceButtonInfo btnInfo in _resourceButtonCounters.Keys)
+            if (d < 0)
             {
-                if (btnInfo.Info.Cost > _gold.Value)
-                {
-                    btnInfo.GetComponent<Button>().interactable = false;
-                }
-                else if (!btnInfo.GetComponent<Button>().interactable)
-                {
-                    btnInfo.GetComponent<Button>().interactable = true;
-                }
+                _ui.ShowMessage("Your castle has been ransacked!", true);
+                _ui.GoldText.text = "Gold: 0";
+                Destroy(gameObject);
             }
-            foreach (UpgradeButtonInfo btnInfo in _upgradeButtonCounters.Keys)
+            else
             {
-                if (btnInfo.Info.Cost > _gold.Value)
+                _ui.GoldText.text = "Gold: " + d.ToString(CultureInfo.CurrentCulture);
+                foreach (ResourceButtonInfo btnInfo in _resourceButtonCounters.Keys)
                 {
-                    btnInfo.GetComponent<Button>().interactable = false;
+                    if (btnInfo.Info.Cost > _gold.Value)
+                    {
+                        btnInfo.GetComponent<Button>().interactable = false;
+                    }
+                    else if (!btnInfo.GetComponent<Button>().interactable)
+                    {
+                        btnInfo.GetComponent<Button>().interactable = true;
+                    }
                 }
-                else if (!btnInfo.GetComponent<Button>().interactable)
+                foreach (UpgradeButtonInfo btnInfo in _upgradeButtonCounters.Keys)
                 {
-                    btnInfo.GetComponent<Button>().interactable = true;
+                    if (btnInfo.Info.Cost > _gold.Value)
+                    {
+                        btnInfo.GetComponent<Button>().interactable = false;
+                    }
+                    else if (!btnInfo.GetComponent<Button>().interactable)
+                    {
+                        btnInfo.GetComponent<Button>().interactable = true;
+                    }
                 }
             }
         });
