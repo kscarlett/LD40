@@ -34,7 +34,8 @@ public class AIBase : MonoBehaviour, IDamageable
 
     void Start()
     {
-        if (tag.Equals("Enemy"))
+        _lastAdded = DateTimeOffset.Now;
+        if (IsEnemy)
         {
             _targetTransform = _castle.transform;
         }
@@ -55,7 +56,6 @@ public class AIBase : MonoBehaviour, IDamageable
             .Timestamp()
             .Where(x => !(_animate && _anim.GetBool("Attacking")))
             .Where(x => x.Timestamp >= _lastAdded.AddSeconds(0.2))
-            .Where(x => IsEnemy)
             .Subscribe(x =>
             {
                 Pathfind();
