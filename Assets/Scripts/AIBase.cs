@@ -116,8 +116,21 @@ public class AIBase : MonoBehaviour, IDamageable
         _health.Value -= damage;
     }
 
-    public class Factory : Factory<AIBase>
+    public class Factory : IFactory<AIBase>
     {
-        
+        private readonly DiContainer _container;
+        public GameObject TargetPrefab;
+
+        public Factory(DiContainer container)
+        {
+            _container = container;
+        }
+
+        public AIBase Create()
+        {
+            var obj = Instantiate(TargetPrefab);
+            _container.InjectGameObjectForComponent<AIBase>(obj);
+            return obj.GetComponent<AIBase>();
+        }
     }
 }
