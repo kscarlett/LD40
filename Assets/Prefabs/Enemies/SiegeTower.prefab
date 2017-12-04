@@ -122,11 +122,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4440580950415210}
   - component: {fileID: 114576954485091810}
-  - component: {fileID: 195495959208385986}
   - component: {fileID: 65882412814870764}
+  - component: {fileID: 195495959208385986}
   m_Layer: 0
   m_Name: SiegeTower
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -665,6 +665,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animate: 0
+  IsEnemy: 1
+  Damage: 0
+  StartingHealth: 0
 --- !u!195 &195495959208385986
 NavMeshAgent:
   m_ObjectHideFlags: 1

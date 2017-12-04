@@ -86,12 +86,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4838343907459246}
+  - component: {fileID: 114050604419115572}
   - component: {fileID: 136195238296100042}
   - component: {fileID: 195180546793936496}
-  - component: {fileID: 114050604419115572}
   m_Layer: 0
   m_Name: Man
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animate: 1
+  IsEnemy: 1
+  Damage: 0
+  StartingHealth: 0
 --- !u!136 &136195238296100042
 CapsuleCollider:
   m_ObjectHideFlags: 1

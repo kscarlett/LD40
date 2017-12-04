@@ -88,11 +88,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4757727237103264}
   - component: {fileID: 114241412524606272}
-  - component: {fileID: 195887858633126262}
   - component: {fileID: 65413760707045178}
+  - component: {fileID: 195887858633126262}
   m_Layer: 0
   m_Name: Ram
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,6 +664,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animate: 0
+  IsEnemy: 1
+  Damage: 0
+  StartingHealth: 0
 --- !u!195 &195887858633126262
 NavMeshAgent:
   m_ObjectHideFlags: 1

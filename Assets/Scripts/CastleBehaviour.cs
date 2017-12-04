@@ -34,7 +34,6 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
         }
     }
 
-    // Use this for initialization
     void Start()
     {
         CastleLevel = new ReactiveProperty<int>(1);

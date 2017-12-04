@@ -28,7 +28,8 @@ public class AIBase : MonoBehaviour, IDamageable
     private void Construct(CastleBehaviour castle)
     {
         _castle = castle;
-        _targetTransform = _castle.transform;
+        if(IsEnemy)
+            _targetTransform = _castle.transform;
     }
 
     void Start()
@@ -62,9 +63,9 @@ public class AIBase : MonoBehaviour, IDamageable
         IDamageable damageable = coll.transform.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            if (coll.transform.tag == "Player" || coll.transform.tag == "PlayerSoldier" || coll.transform.tag == "Enemy")
+            if (coll.transform.CompareTag("Player") || coll.transform.CompareTag("PlayerSoldier") || coll.transform.CompareTag("Enemy"))
             {
-                if ((IsEnemy && coll.transform.tag != "Enemy") || coll.transform.tag == "Enemy")
+                if ((IsEnemy && !coll.transform.CompareTag("Enemy")) || coll.transform.CompareTag("Enemy") )
                 {
                     if (_currentEnemy == null)
                     {
@@ -79,6 +80,11 @@ public class AIBase : MonoBehaviour, IDamageable
     public void PrepareAnimationCancel()
     {
         StartCoroutine(CheckForCancel());
+    }
+
+    public void SetTargetTransform(Transform target)
+    {
+        _targetTransform = target;
     }
 
     private IEnumerator CheckForCancel()
