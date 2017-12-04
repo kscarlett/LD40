@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -19,24 +20,33 @@ public class UIBehaviour : MonoBehaviour
     private GameObject _messageBoxObject;
     private List<string> _messages;
     private bool _isLost;
+    private GameObject _notEnoughGoldObject;
+    private DateTimeOffset _lastEnabled;
 
     [Inject]
-    private void Construct(List<ResourceButtonInfo> buttons, List<UpgradeButtonInfo> upgradeButtons, [Inject(Id = "GoldText")] TextMeshProUGUI goldText, [Inject(Id = "GoldClicker")] Button goldButton, [Inject(Id = "MessageBox")] GameObject messageBoxObject)
+    private void Construct(List<ResourceButtonInfo> buttons, List<UpgradeButtonInfo> upgradeButtons, [Inject(Id = "GoldText")] TextMeshProUGUI goldText, [Inject(Id = "GoldClicker")] Button goldButton, [Inject(Id = "MessageBox")] GameObject messageBoxObject, [Inject(Id = "NotEnoughGoldBox")] GameObject notEnoughGoldObject)
     {
         Buttons = buttons;
         GoldText = goldText;
         GoldButton = goldButton;
         UpgradeButtons = upgradeButtons;
         _messageBoxObject = messageBoxObject;
+        _notEnoughGoldObject = notEnoughGoldObject;
+    }
+
+    void Start()
+    {
+        _lastEnabled = DateTimeOffset.Now;
+        this.UpdateAsObservable().Where(_ => _notEnoughGoldObject.activeInHierarchy).Timestamp()
+            .Where(x => x.Timestamp > _lastEnabled.AddSeconds(2)).Subscribe(x =>
+            {
+                _notEnoughGoldObject.SetActive(false);
+            });
         _messageBoxObject.GetComponentInChildren<Button>().onClick.AsObservable().Subscribe(_ =>
         {
             _messageBoxObject.SetActive(false);
             Time.timeScale = 1;
         });
-    }
-
-    void Start()
-    {
         _messages = new List<string>();
         this.UpdateAsObservable().Where(_ => !_messageBoxObject.activeInHierarchy && _messages.Count > 0).Subscribe(x =>
         {
@@ -52,6 +62,12 @@ public class UIBehaviour : MonoBehaviour
             }
         });
         _isLost = false;
+    }
+
+    public void AlertUserToNoGold()
+    {
+        _lastEnabled = DateTimeOffset.Now;
+        _notEnoughGoldObject.SetActive(true);
     }
 
     public void ShowMessage(string message, bool isLost = false)

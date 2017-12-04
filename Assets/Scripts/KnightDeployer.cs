@@ -10,11 +10,13 @@ public class KnightDeployer : MonoBehaviour
     private RaycastHit _hit;
     private Camera _camera;
     private Transform _castleTransform;
+    private CastleBehaviour _castle;
 
     [Inject]
-    private void Construct(Transform castleTransform)
+    private void Construct(Transform castleTransform, CastleBehaviour castle)
     {
         _castleTransform = castleTransform;
+        _castle = castle;
     }
 
     void Start () {
@@ -38,8 +40,11 @@ public class KnightDeployer : MonoBehaviour
     private void SpawnKnight(Transform target)
     {
         Vector2 spawnPoint = GetCirclePoint(target, 10);
-        var knight = Instantiate(_knightPrefab, new Vector3(spawnPoint.x, 0, spawnPoint.y), Quaternion.identity);
-        knight.GetComponent<AIBase>().EnemyTransform = target;
+        if (_castle.PayGold(2))
+        {
+            var knight = Instantiate(_knightPrefab, new Vector3(spawnPoint.x, 0, spawnPoint.y), Quaternion.identity);
+            knight.GetComponent<AIBase>().EnemyTransform = target;
+        }
     }
 
     private Vector2 GetCirclePoint(Transform target, int radius)
