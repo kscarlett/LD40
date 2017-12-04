@@ -10,6 +10,7 @@ using Zenject;
 [RequireComponent(typeof(NavMeshAgent), typeof(Collider))]
 public class AIBase : MonoBehaviour, IDamageable
 {
+
     [SerializeField] private bool _animate;
 
     private CastleBehaviour _castle;
@@ -28,12 +29,12 @@ public class AIBase : MonoBehaviour, IDamageable
     private void Construct(CastleBehaviour castle)
     {
         _castle = castle;
-        if(IsEnemy)
-            _targetTransform = _castle.transform;
     }
 
     void Start()
     {
+        if (IsEnemy)
+            _targetTransform = _castle.transform;
         _health = new ReactiveProperty<int>(StartingHealth);
         if (_animate)
             _anim = GetComponentInChildren<Animator>();
@@ -46,6 +47,7 @@ public class AIBase : MonoBehaviour, IDamageable
             .Timestamp()
             .Where(x => !(_animate && _anim.GetBool("Attacking")))
             .Where(x => x.Timestamp >= _lastAdded.AddSeconds(0.2))
+            .Where(x => IsEnemy)
             .Subscribe(x =>
             {
                 Pathfind();
@@ -112,5 +114,10 @@ public class AIBase : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         _health.Value -= damage;
+    }
+
+    public class Factory : Factory<AIBase>
+    {
+        
     }
 }
