@@ -21,9 +21,14 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
     [Inject]
     private void Construct(UIBehaviour ui)
     {
+        _ui = ui;
+    }
+
+    void Start()
+    {
         _resourceButtonCounters = new Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>>();
         _upgradeButtonCounters = new Dictionary<UpgradeButtonInfo, ReactiveProperty<ulong>>();
-        _ui = ui;
+
         foreach (ResourceButtonInfo btn in _ui.Buttons)
         {
             _resourceButtonCounters.Add(btn, new ReactiveProperty<ulong>(0));
@@ -32,10 +37,6 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
         {
             _upgradeButtonCounters.Add(btn, new ReactiveProperty<ulong>(0));
         }
-    }
-
-    void Start()
-    {
         CastleLevel = new ReactiveProperty<int>(1);
         _gold = new ReactiveProperty<double>(0);
         _lastAdded = DateTimeOffset.Now;
