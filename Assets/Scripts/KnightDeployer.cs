@@ -39,7 +39,7 @@ public class KnightDeployer : MonoBehaviour
     {
         Vector2 spawnPoint = GetCirclePoint(target, 10);
         var knight = Instantiate(_knightPrefab, new Vector3(spawnPoint.x, 0, spawnPoint.y), Quaternion.identity);
-        knight.GetComponent<AIBase>().SetTargetTransform(target);
+        knight.GetComponent<AIBase>().EnemyTransform = target;
     }
 
     private Vector2 GetCirclePoint(Transform target, int radius)

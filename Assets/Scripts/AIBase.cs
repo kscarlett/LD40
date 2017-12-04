@@ -24,6 +24,7 @@ public class AIBase : MonoBehaviour, IDamageable
     public int Damage;
     private ReactiveProperty<int> _health;
     public int StartingHealth;
+    public Transform EnemyTransform;
 
     [Inject]
     private void Construct(CastleBehaviour castle)
@@ -33,8 +34,15 @@ public class AIBase : MonoBehaviour, IDamageable
 
     void Start()
     {
-        if (IsEnemy)
+        if (tag.Equals("Enemy"))
+        {
             _targetTransform = _castle.transform;
+        }
+        else
+        {
+            _targetTransform = EnemyTransform;
+        }
+            
         _health = new ReactiveProperty<int>(StartingHealth);
         if (_animate)
             _anim = GetComponentInChildren<Animator>();
@@ -53,11 +61,22 @@ public class AIBase : MonoBehaviour, IDamageable
                 Pathfind();
                 _lastAdded = x.Timestamp;
             });
+
+        StartCoroutine(LateStart());
     }
 
     private void Pathfind()
     {
         _nav.SetDestination(_targetTransform.position);
+    }
+
+    private IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+        if (!IsEnemy)
+        {
+            _targetTransform = EnemyTransform;
+        }
     }
 
     void OnCollisionEnter(Collision coll)
