@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 114817718023699658}
   - component: {fileID: 136011383087784148}
   - component: {fileID: 195011976674391112}
+  - component: {fileID: 54022258301948198}
   m_Layer: 0
   m_Name: Castle Knight
   m_TagString: PlayerSoldier
@@ -353,6 +354,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189462966861380}
   m_Mesh: {fileID: 4300006, guid: e2e3a9065897c35439a237ce95fb192c, type: 3}
+--- !u!54 &54022258301948198
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1548927678299148}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95481358284822518
 Animator:
   serializedVersion: 3
@@ -385,6 +401,7 @@ MonoBehaviour:
   IsEnemy: 0
   Damage: 1
   StartingHealth: 5
+  EnemyTransform: {fileID: 0}
 --- !u!136 &136011383087784148
 CapsuleCollider:
   m_ObjectHideFlags: 1
