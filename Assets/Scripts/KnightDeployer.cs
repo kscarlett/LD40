@@ -9,12 +9,12 @@ public class KnightDeployer : MonoBehaviour
     private Ray _ray;
     private RaycastHit _hit;
     private Camera _camera;
-    private CastleBehaviour _castle;
+    private Transform _castleTransform;
 
     [Inject]
-    private void Construct(CastleBehaviour castle)
+    private void Construct(Transform castleTransform)
     {
-        _castle = castle;
+        _castleTransform = castleTransform;
     }
 
     void Start () {
@@ -44,7 +44,7 @@ public class KnightDeployer : MonoBehaviour
 
     private Vector2 GetCirclePoint(Transform target, int radius)
     {
-        var heading = target.position - _castle.transform.position;
+        var heading = target.position - _castleTransform.position;
         var normalizedDirection = heading / heading.magnitude;
         var scaledDirection = normalizedDirection * radius;
         

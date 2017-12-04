@@ -666,8 +666,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animate: 0
   IsEnemy: 1
-  Damage: 0
-  StartingHealth: 0
+  Damage: 25
+  StartingHealth: 3
 --- !u!195 &195495959208385986
 NavMeshAgent:
   m_ObjectHideFlags: 1
