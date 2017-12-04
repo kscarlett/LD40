@@ -17,6 +17,7 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
     private ReactiveProperty<double> _gold;
     private DateTimeOffset _lastAdded;
     public ReactiveProperty<int> CastleLevel;
+    private ReactiveProperty<bool> _isAlertedToNoGold;
 
     [Inject]
     private void Construct(UIBehaviour ui)
@@ -24,8 +25,23 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
         _ui = ui;
     }
 
+    public bool PayGold(double amount)
+    {
+        if (amount <= _gold.Value)
+        {
+            _gold.Value -= amount;
+            return true;
+        }
+        else
+        {
+            _ui.AlertUserToNoGold();
+            return false;
+        }
+    }
+
     void Start()
     {
+        _isAlertedToNoGold = new ReactiveProperty<bool>(false);
         _resourceButtonCounters = new Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>>();
         _upgradeButtonCounters = new Dictionary<UpgradeButtonInfo, ReactiveProperty<ulong>>();
 
@@ -167,5 +183,10 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         _gold.Value -= damage;
+    }
+
+    public static implicit operator Transform(CastleBehaviour v)
+    {
+        throw new NotImplementedException();
     }
 }
