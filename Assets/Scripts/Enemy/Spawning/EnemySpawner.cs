@@ -26,8 +26,8 @@ public class EnemySpawner : MonoBehaviour
         if (Mathf.Abs(y) < 0.01f)
             y = 0;
         _factory.TargetPrefab = enemyPrefabToSpawn;
+        _factory.SpawnPos = new Vector3(x, 0, y);
+        _factory.Rotation = Quaternion.identity;
         AIBase result = _factory.Create();
-        result.transform.position = new Vector3(x, 0, y);
-        result.transform.rotation = Quaternion.identity;
     }
 }

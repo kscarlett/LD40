@@ -120,6 +120,8 @@ public class AIBase : MonoBehaviour, IDamageable
     {
         private readonly DiContainer _container;
         public GameObject TargetPrefab;
+        public Vector3 SpawnPos;
+        public Quaternion Rotation;
 
         public Factory(DiContainer container)
         {
@@ -128,7 +130,7 @@ public class AIBase : MonoBehaviour, IDamageable
 
         public AIBase Create()
         {
-            var obj = Instantiate(TargetPrefab);
+            var obj = Instantiate(TargetPrefab, SpawnPos, Rotation);
             _container.InjectGameObjectForComponent<AIBase>(obj);
             return obj.GetComponent<AIBase>();
         }
