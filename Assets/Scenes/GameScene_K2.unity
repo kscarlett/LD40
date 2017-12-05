@@ -140,7 +140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.16444443}
   m_AnchorMax: {x: 0.5, y: 0.16444443}
-  m_AnchoredPosition: {x: -5, y: -0.4}
+  m_AnchoredPosition: {x: -5, y: -0.4000244}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &58778185
@@ -237,11 +237,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1472,6 +1472,8 @@ MonoBehaviour:
     Cost: 1
     GoldPerSecond: 1
     UnlockThreshhold: 10
+    EnemyUnlockThreshold: 0
+    EnemyName: 
     UnlockMessage: PEASANT MEMES
     EnemyUnlockMessage: 
     HasRun: 0
@@ -1479,6 +1481,8 @@ MonoBehaviour:
     Cost: 2
     GoldPerSecond: 2
     UnlockThreshhold: 20
+    EnemyUnlockThreshold: 0
+    EnemyName: 
     UnlockMessage: MERCHANT MEMES
     EnemyUnlockMessage: 
     HasRun: 0
@@ -1486,6 +1490,8 @@ MonoBehaviour:
     Cost: 3
     GoldPerSecond: 3
     UnlockThreshhold: 30
+    EnemyUnlockThreshold: 0
+    EnemyName: 
     UnlockMessage: MINE MEMES
     EnemyUnlockMessage: 
     HasRun: 0
@@ -1493,6 +1499,8 @@ MonoBehaviour:
     Cost: 4
     GoldPerSecond: 4
     UnlockThreshhold: 40
+    EnemyUnlockThreshold: 0
+    EnemyName: 
     UnlockMessage: CRIMINAL MEMES
     EnemyUnlockMessage: 
     HasRun: 0
@@ -1500,6 +1508,8 @@ MonoBehaviour:
     Cost: 5
     GoldPerSecond: 5
     UnlockThreshhold: 50
+    EnemyUnlockThreshold: 0
+    EnemyName: 
     UnlockMessage: SHAFT MEMES
     EnemyUnlockMessage: 
     HasRun: 0
@@ -1586,7 +1596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6a85c3d35eee94e843e6c283672cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 0}
 --- !u!1 &1321926320
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,6 +2036,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
+        type: 2}
+      propertyPath: Enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4266637151966832, guid: 425fe951a504aa94f85168fe7d8a35ee, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2064,6 +2078,35 @@ Prefab:
       propertyPath: _spawnRadius
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
+        type: 2}
+      propertyPath: _enemies.Array.data[1].Spawnable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
+        type: 2}
+      propertyPath: Enemies.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 1321899991208732, guid: 4a0b27c42d6cc7c4da7786750dc58f8b,
+        type: 2}
+    - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
+        type: 2}
+      propertyPath: Enemies.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 1479234091838482, guid: 03f3e03cb15479a4985066b7d74fc486,
+        type: 2}
+    - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
+        type: 2}
+      propertyPath: Enemies.Array.data[2].Prefab
+      value: 
+      objectReference: {fileID: 1773432797559962, guid: 2469aee42ac981c44b4aa1f78129fa42,
+        type: 2}
+    - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
+        type: 2}
+      propertyPath: Enemies.Array.data[3].Prefab
+      value: 
+      objectReference: {fileID: 1707501071617438, guid: a576ada6ea094a549ada8f14783b1720,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 425fe951a504aa94f85168fe7d8a35ee, type: 2}
   m_IsPrefabParent: 0

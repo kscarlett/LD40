@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using Zenject;
 using UniRx;
@@ -17,11 +18,12 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
     private ReactiveProperty<double> _gold;
     private DateTimeOffset _lastAdded;
     public ReactiveProperty<int> CastleLevel;
-    private ReactiveProperty<bool> _isAlertedToNoGold;
+    private EnemyManager _manager;
 
     [Inject]
-    private void Construct(UIBehaviour ui)
+    private void Construct(UIBehaviour ui, EnemyManager manager)
     {
+        _manager = manager;
         _ui = ui;
     }
 
@@ -41,7 +43,6 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
 
     void Start()
     {
-        _isAlertedToNoGold = new ReactiveProperty<bool>(false);
         _resourceButtonCounters = new Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>>();
         _upgradeButtonCounters = new Dictionary<UpgradeButtonInfo, ReactiveProperty<ulong>>();
 
@@ -129,6 +130,14 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
             });
         }
 
+        foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
+        {
+            btn.Amount
+                .Where(x => x >= (int)btn.Info.EnemyUnlockThreshold && !_manager.GetEnemy(btn.Info.EnemyName).Spawnable)
+                .Subscribe(x => _manager.EnableEnemy(btn.Info.EnemyName));
+            _ui.ShowMessage(btn.Info.EnemyUnlockMessage);
+        }
+
         for (var i = 0; i < _resourceButtonCounters.Keys.Count; i++)
         {
             ResourceButtonInfo button = _resourceButtonCounters.Keys.ToList()[i];
@@ -183,10 +192,5 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         _gold.Value -= damage;
-    }
-
-    public static implicit operator Transform(CastleBehaviour v)
-    {
-        throw new NotImplementedException();
     }
 }
