@@ -11,12 +11,14 @@ public class KnightDeployer : MonoBehaviour
     private Camera _camera;
     private Transform _castleTransform;
     private CastleBehaviour _castle;
+    private AIBase.Factory _factory;
 
     [Inject]
-    private void Construct(Transform castleTransform, CastleBehaviour castle)
+    private void Construct(Transform castleTransform, CastleBehaviour castle, AIBase.Factory factory)
     {
         _castleTransform = castleTransform;
         _castle = castle;
+        _factory = factory;
     }
 
     void Start () {
@@ -42,7 +44,11 @@ public class KnightDeployer : MonoBehaviour
         Vector2 spawnPoint = GetCirclePoint(target, 10);
         if (_castle.PayGold(2))
         {
-            var knight = Instantiate(_knightPrefab, new Vector3(spawnPoint.x, 0, spawnPoint.y), Quaternion.identity);
+            //var knight = Instantiate(_knightPrefab, new Vector3(spawnPoint.x, 0, spawnPoint.y), Quaternion.identity);
+            _factory.Rotation = Quaternion.identity;
+            _factory.SpawnPos = new Vector3(spawnPoint.x, 0, spawnPoint.y);
+            _factory.TargetPrefab = _knightPrefab;
+            var knight = _factory.Create();
             knight.GetComponent<AIBase>().EnemyTransform = target;
         }
     }

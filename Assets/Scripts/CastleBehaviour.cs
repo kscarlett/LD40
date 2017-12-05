@@ -66,7 +66,6 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
             {
                 AddGold();
                 _lastAdded = x.Timestamp;
-                _ui.PlayGoldSound();
             });
 
         _gold.Subscribe(d =>
