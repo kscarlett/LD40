@@ -22,9 +22,10 @@ public class UIBehaviour : MonoBehaviour
     private bool _isLost;
     private GameObject _notEnoughGoldObject;
     private DateTimeOffset _lastEnabled;
+    private Camera _cam;
 
     [Inject]
-    private void Construct(List<ResourceButtonInfo> buttons, List<UpgradeButtonInfo> upgradeButtons, [Inject(Id = "GoldText")] TextMeshProUGUI goldText, [Inject(Id = "GoldClicker")] Button goldButton, [Inject(Id = "MessageBox")] GameObject messageBoxObject, [Inject(Id = "NotEnoughGoldBox")] GameObject notEnoughGoldObject)
+    private void Construct(List<ResourceButtonInfo> buttons, List<UpgradeButtonInfo> upgradeButtons, [Inject(Id = "GoldText")] TextMeshProUGUI goldText, [Inject(Id = "GoldClicker")] Button goldButton, [Inject(Id = "MessageBox")] GameObject messageBoxObject, [Inject(Id = "NotEnoughGoldBox")] GameObject notEnoughGoldObject, Camera cam)
     {
         Buttons = buttons;
         GoldText = goldText;
@@ -32,6 +33,7 @@ public class UIBehaviour : MonoBehaviour
         UpgradeButtons = upgradeButtons;
         _messageBoxObject = messageBoxObject;
         _notEnoughGoldObject = notEnoughGoldObject;
+        _cam = cam;
     }
 
     void Start()
@@ -62,6 +64,11 @@ public class UIBehaviour : MonoBehaviour
             }
         });
         _isLost = false;
+    }
+
+    public void PlayGoldSound()
+    {
+        _cam.GetComponent<AudioSource>().Play();
     }
 
     public void AlertUserToNoGold()

@@ -20,6 +20,7 @@ public class UIInstaller : MonoInstaller<UIInstaller>
 
     public override void InstallBindings()
     {
+        Container.Bind<Camera>().FromComponentInHierarchy();
         Container.BindInstance(NotEnoughGoldObject).WithId("NotEnoughGoldBox");
         Container.BindInstance(MessageBoxObject).WithId("MessageBox");
         Container.BindInstance(GoldButtonObj.GetComponent<Button>()).WithId("GoldClicker");

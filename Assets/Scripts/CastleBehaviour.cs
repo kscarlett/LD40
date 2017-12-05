@@ -66,6 +66,7 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
             {
                 AddGold();
                 _lastAdded = x.Timestamp;
+                _ui.PlayGoldSound();
             });
 
         _gold.Subscribe(d =>
@@ -108,6 +109,7 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
         {
             AddGold();
             _gold.Value += 1;
+            _ui.PlayGoldSound();
         });
 
         foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
@@ -179,9 +181,14 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
         var theBtn = (ResourceButtonInfo) sender;
         if (_gold.Value >= theBtn.Info.Cost)
         {
+            _ui.PlayGoldSound();
             _gold.Value -= theBtn.Info.Cost;
             theBtn.Cost.Value += 1;
             _resourceButtonCounters[theBtn].Value += 1;
+        }
+        else
+        {
+            _ui.AlertUserToNoGold();
         }
 
     }

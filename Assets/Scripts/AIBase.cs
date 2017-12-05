@@ -51,12 +51,14 @@ public class AIBase : MonoBehaviour, IDamageable
             {
                 _targetTransform = CurrentEnemy.transform;
                 _anim.SetBool("Attacking", true);
+                GetComponent<AudioSource>().Play();
             });
 
         this.UpdateAsObservable().Where(x => CurrentEnemy == null && _targetTransform != _castle.transform && IsEnemy).Subscribe(
             x =>
             {
                 _targetTransform = CurrentEnemy.transform;
+                GetComponent<AudioSource>().Stop();
             });
 
         _health = new ReactiveProperty<int>(StartingHealth);
@@ -138,6 +140,7 @@ public class AIBase : MonoBehaviour, IDamageable
                     {
                         Debug.Log("CurrentEnemy not null");
                         _anim.SetBool("Attacking", true);
+                        GetComponent<AudioSource>().Play();
                         CurrentEnemy = coll.gameObject;
                         if (damageable is AIBase)
                         {
