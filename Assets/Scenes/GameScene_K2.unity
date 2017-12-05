@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.5513084, g: 0.61706734, b: 0.75735295, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 462046744}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
@@ -476,15 +476,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7904e1edc0f1a0745b3e01df4b87d428, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -569,7 +569,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9789554, g: 0.99264705, b: 0.74448526, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -580,7 +580,7 @@ Light:
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_NormalBias: 0
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1099,7 +1099,7 @@ Transform:
   m_LocalScale: {x: 12, y: 1, z: 12}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &932289468
 GameObject:
@@ -1134,7 +1134,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 410, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932289470
 MonoBehaviour:
@@ -1155,7 +1155,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: New Text
+  m_text: Messagebox text goes here
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -1182,14 +1182,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 55.5
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 14
+  m_fontSizeMax: 55.5
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1222,19 +1222,19 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 932289470}
-    characterCount: 8
+    characterCount: 25
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1254,6 +1254,89 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 932289468}
+--- !u!1001 &940988429
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404087880004668, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 11976466b67862f408f1504e01f8b79d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &940988430 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1222651504387872, guid: 11976466b67862f408f1504e01f8b79d,
+    type: 2}
+  m_PrefabInternal: {fileID: 940988429}
+--- !u!65 &940988431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940988430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.6, y: 4.55, z: 21.18}
+  m_Center: {x: -0.63, y: 2.17, z: 0.8}
+--- !u!114 &940988432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940988430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f62af724f841264da0deb6a5217d5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knightPrefab: {fileID: 1548927678299148, guid: 049507909851993468217a213affb497,
+    type: 2}
+--- !u!114 &940988433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940988430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c773842105122404eabcbd571fbbe533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1036938760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1576,7 @@ MonoBehaviour:
     UnlockMessage: The merchants pay their taxes reluctantly.
     EnemyUnlockMessage: The enemies grow more powerful.
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Basic Mines
     Cost: 138
     GoldPerSecond: 14
@@ -1512,16 +1596,18 @@ MonoBehaviour:
     UnlockMessage: You force criminals to work in your mines.
     EnemyUnlockMessage: The enemies grow stronger and stronger.
     HasRun: 0
-    HasNewEnemyType: 1
+    HasNewEnemyType: 0
   - Name: Shaft Mines
     Cost: 10478
     GoldPerSecond: 1050
     UnlockThreshhold: 9000
     EnemyUnlockThreshold: 10
-    EnemyName: 
+    EnemyName: Ram
     UnlockMessage: These mines let you delve deeper than before.
-    EnemyUnlockMessage: The enemy forces grow stronger every day.
+    EnemyUnlockMessage: The enemies have sent siege equipment to take down your mighty
+      castle!
     HasRun: 0
+    HasNewEnemyType: 1
   - Name: Even Bigger Shaft Mines
     Cost: 94232
     GoldPerSecond: 9425
@@ -1531,15 +1617,17 @@ MonoBehaviour:
     UnlockMessage: These mines let your miners mine even more efficiently.
     EnemyUnlockMessage: The enemy forces grow stronger every day.
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Dwarven Miners
     Cost: 848000
     GoldPerSecond: 85000
     UnlockThreshhold: 700000
     EnemyUnlockThreshold: 30
-    EnemyName: 
+    EnemyName: Demon
     UnlockMessage: The mines delve deeper than any man dare go.
     EnemyUnlockMessage: The dwarves have delved too greedily and too deep.
     HasRun: 0
+    HasNewEnemyType: 1
   - Name: Dwarven Refineries
     Cost: 7632092
     GoldPerSecond: 763209
@@ -1549,15 +1637,17 @@ MonoBehaviour:
     UnlockMessage: Refined Dwarves are more efficient... somehow.
     EnemyUnlockMessage: The enemy monsters are angered.
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Jewellery Thieves
     Cost: 68688760
     GoldPerSecond: 6868876
     UnlockThreshhold: 60000000
     EnemyUnlockThreshold: 10
-    EnemyName: 
+    EnemyName: SiegeTower
     UnlockMessage: Jewels you don't pay for = easy profit
-    EnemyUnlockMessage: The enemies despise you.
+    EnemyUnlockMessage: The enemies have sent their biggest siege equipment!
     HasRun: 0
+    HasNewEnemyType: 1
   - Name: Alchemist
     Cost: 618198800
     GoldPerSecond: 61819876
@@ -1567,6 +1657,7 @@ MonoBehaviour:
     UnlockMessage: You have discovered the ancient arts of Alchemy.
     EnemyUnlockMessage: The enemy ruler is jealous.
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Ye Olde Banks
     Cost: 5.563789e+9
     GoldPerSecond: 556378900
@@ -1576,6 +1667,7 @@ MonoBehaviour:
     UnlockMessage: Apparently credits cards are extremely profitable... for you.
     EnemyUnlockMessage: The enemy monsters are angered.
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Demanding Princesses
     Cost: 5.00741e+10
     GoldPerSecond: 5.0074097e+9
@@ -1585,6 +1677,7 @@ MonoBehaviour:
     UnlockMessage: Robs other kingdoms with tributes.
     EnemyUnlockMessage: The enemy monsters are learning from their losses.
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Wizard
     Cost: 4.506669e+11
     GoldPerSecond: 4.5066686e+10
@@ -1594,6 +1687,7 @@ MonoBehaviour:
     UnlockMessage: One-ups alchemy by turning air into gold. Bravo!
     EnemyUnlockMessage: The enemies are upping their assault
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Dragon
     Cost: 4.056002e+12
     GoldPerSecond: 4.056002e+11
@@ -1603,6 +1697,7 @@ MonoBehaviour:
     UnlockMessage: Hoards gold you can steal.
     EnemyUnlockMessage: The enemy monsters are learning from their losses.
     HasRun: 0
+    HasNewEnemyType: 0
   - Name: Electric Artists
     Cost: 3.6504018e+13
     GoldPerSecond: 3.6504019e+12
@@ -1614,21 +1709,82 @@ MonoBehaviour:
     EnemyUnlockMessage: You... You've beaten all the content we managed to put in
       the game! Congratulations!!! Please follow us to stay updated on further updates!
     HasRun: 0
+    HasNewEnemyType: 0
   Upgrades:
-  - Name: meme 1
+  - Name: Thicker Armor
     Cost: 10
-    UnlockThreshhold: 15
-    UnlockMessage: ree1
+    UnlockThreshhold: 20
+    UnlockMessage: You have unlocked thicker armor for your soldiers.
     HasRun: 0
-  - Name: meme 2
-    Cost: 20
-    UnlockThreshhold: 30
-    UnlockMessage: ree2
+  - Name: Sharper Swords
+    Cost: 80
+    UnlockThreshhold: 60
+    UnlockMessage: You have unlocked sharper swords for your soldiers.
     HasRun: 0
-  - Name: meme 3
-    Cost: 30
-    UnlockThreshhold: 45
-    UnlockMessage: ree3
+  - Name: Stronger Shields
+    Cost: 320
+    UnlockThreshhold: 180
+    UnlockMessage: You have unlocked stronger shields for your soldiers.
+    HasRun: 0
+  - Name: Side Dagger
+    Cost: 1280
+    UnlockThreshhold: 540
+    UnlockMessage: You have unlocked daggers for your soldiers.
+    HasRun: 0
+  - Name: Plate Armor
+    Cost: 5120
+    UnlockThreshhold: 1620
+    UnlockMessage: You have unlocked plate armor for your soldiers.
+    HasRun: 0
+  - Name: Heavy Shields
+    Cost: 20480
+    UnlockThreshhold: 2430
+    UnlockMessage: You have unlocked heavy shields for your soldiers.
+    HasRun: 0
+  - Name: Serrated Blades
+    Cost: 40960
+    UnlockThreshhold: 4860
+    UnlockMessage: You have unlocked serrated blades for your soldiers.
+    HasRun: 0
+  - Name: Heavy Axes
+    Cost: 61440
+    UnlockThreshhold: 14580
+    UnlockMessage: You have unlocked heavy axes for your soldiers.
+    HasRun: 0
+  - Name: Horses
+    Cost: 184320
+    UnlockThreshhold: 43740
+    UnlockMessage: You have unlocked horses for your soldiers.
+    HasRun: 0
+  - Name: Pikes
+    Cost: 552960
+    UnlockThreshhold: 131220
+    UnlockMessage: You have unlocked pikes for your soldiers.
+    HasRun: 0
+  - Name: Enchanted Armor
+    Cost: 1105920
+    UnlockThreshhold: 393660
+    UnlockMessage: You have unlocked enchanted armor for your soldiers.
+    HasRun: 0
+  - Name: Blessed Swords
+    Cost: 3317760
+    UnlockThreshhold: 1180980
+    UnlockMessage: You have unlocked blessed swords for your soldiers.
+    HasRun: 0
+  - Name: Kung Fu Lessons
+    Cost: 9953280
+    UnlockThreshhold: 3542940
+    UnlockMessage: You have unlocked Kung Fu lessons for your soldiers.
+    HasRun: 0
+  - Name: Horse Armor
+    Cost: 29859840
+    UnlockThreshhold: 10628820
+    UnlockMessage: You have unlocked horse armor for your soldiers' horses.
+    HasRun: 0
+  - Name: Sense of Pride and Accomplishment
+    Cost: 1e+9
+    UnlockThreshhold: 31886460
+    UnlockMessage: You have unlocked loot boxes for your soldiers.
     HasRun: 0
   UpgradesButtonContainer: {fileID: 1756501168}
   ResourcesButtonContainer: {fileID: 1874499503}
@@ -1673,7 +1829,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1257610376
 MonoBehaviour:
@@ -1769,130 +1925,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1321926320}
---- !u!1 &1425286040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1425286044}
-  - component: {fileID: 1425286043}
-  - component: {fileID: 1425286042}
-  - component: {fileID: 1425286041}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!23 &1425286041
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425286040}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: d71ff82990ede5c4898fc34d2a186dd5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &1425286042
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425286040}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1425286043
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425286040}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1425286044
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425286040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1430165193
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248510203038264, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6ec525f5381351d48b168b8e4aff9dc0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1735532990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,7 +2204,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4266637151966832, guid: 425fe951a504aa94f85168fe7d8a35ee, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114903407659629432, guid: 425fe951a504aa94f85168fe7d8a35ee,
         type: 2}
@@ -2556,7 +2588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -53.6}
+  m_AnchoredPosition: {x: 0, y: -160}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939285951
@@ -2630,7 +2662,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 9594a371c54c928438f3f276606a6cc1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
