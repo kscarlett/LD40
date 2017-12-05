@@ -538,6 +538,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1648382843741120, guid: b84a8c0d46fae1d4daf3fa632741fd41,
     type: 2}
   m_PrefabInternal: {fileID: 263075923}
+--- !u!114 &366222931 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114741796693017210, guid: b84a8c0d46fae1d4daf3fa632741fd41,
+    type: 2}
+  m_PrefabInternal: {fileID: 263075923}
+  m_Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
 --- !u!1 &462046743
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,8 +800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Buttons: []
   UpgradeButtons: []
-  GoldText: {fileID: 0}
-  GoldButton: {fileID: 0}
+  GoldText: {fileID: 366222931}
+  GoldButton: {fileID: 2021308775}
 --- !u!1 &790417273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,56 +1555,146 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceCollectors:
-  - Name: Filthy Peasant
-    Cost: 1
+  - Name: Filthy Peasants
+    Cost: 10
     GoldPerSecond: 1
     UnlockThreshhold: 10
-    EnemyUnlockThreshold: 0
-    EnemyName: 
-    UnlockMessage: PEASANT MEMES
-    EnemyUnlockMessage: 
+    EnemyUnlockThreshold: 5
+    EnemyName: Peasant
+    UnlockMessage: You can hire filthy peasants to pick up filth for you.
+    EnemyUnlockMessage: You seem to have angered the peasants!
     HasRun: 0
     HasNewEnemyType: 1
   - Name: Terribad Merchants
-    Cost: 2
-    GoldPerSecond: 2
-    UnlockThreshhold: 20
-    EnemyUnlockThreshold: 0
-    EnemyName: 
-    UnlockMessage: MERCHANT MEMES
-    EnemyUnlockMessage: 
-    HasRun: 0
-    HasNewEnemyType: 1
-  - Name: Basic Mine
-    Cost: 3
+    Cost: 23
     GoldPerSecond: 3
-    UnlockThreshhold: 30
-    EnemyUnlockThreshold: 0
+    UnlockThreshhold: 20
+    EnemyUnlockThreshold: 10
     EnemyName: 
-    UnlockMessage: MINE MEMES
-    EnemyUnlockMessage: 
+    UnlockMessage: The merchants pay their taxes reluctantly.
+    EnemyUnlockMessage: The enemies grow more powerful.
+    HasRun: 0
+  - Name: Basic Mines
+    Cost: 138
+    GoldPerSecond: 14
+    UnlockThreshhold: 100
+    EnemyUnlockThreshold: 10
+    EnemyName: EnemyKnight
+    UnlockMessage: There's gold to be found in the mines.
+    EnemyUnlockMessage: Some nearby knights have heard of your newfound wealth.
     HasRun: 0
     HasNewEnemyType: 1
   - Name: Criminal Labour
-    Cost: 4
-    GoldPerSecond: 4
-    UnlockThreshhold: 40
-    EnemyUnlockThreshold: 0
+    Cost: 1172
+    GoldPerSecond: 117
+    UnlockThreshhold: 1000
+    EnemyUnlockThreshold: 20
     EnemyName: 
-    UnlockMessage: CRIMINAL MEMES
-    EnemyUnlockMessage: 
+    UnlockMessage: You force criminals to work in your mines.
+    EnemyUnlockMessage: The enemies grow stronger and stronger.
     HasRun: 0
     HasNewEnemyType: 1
   - Name: Shaft Mines
-    Cost: 5
-    GoldPerSecond: 5
-    UnlockThreshhold: 50
-    EnemyUnlockThreshold: 0
+    Cost: 10478
+    GoldPerSecond: 1050
+    UnlockThreshhold: 9000
+    EnemyUnlockThreshold: 10
     EnemyName: 
-    UnlockMessage: SHAFT MEMES
-    EnemyUnlockMessage: 
+    UnlockMessage: These mines let you delve deeper than before.
+    EnemyUnlockMessage: The enemy forces grow stronger every day.
     HasRun: 0
-    HasNewEnemyType: 0
+  - Name: Even Bigger Shaft Mines
+    Cost: 94232
+    GoldPerSecond: 9425
+    UnlockThreshhold: 75000
+    EnemyUnlockThreshold: 15
+    EnemyName: 
+    UnlockMessage: These mines let your miners mine even more efficiently.
+    EnemyUnlockMessage: The enemy forces grow stronger every day.
+    HasRun: 0
+  - Name: Dwarven Miners
+    Cost: 848000
+    GoldPerSecond: 85000
+    UnlockThreshhold: 700000
+    EnemyUnlockThreshold: 30
+    EnemyName: 
+    UnlockMessage: The mines delve deeper than any man dare go.
+    EnemyUnlockMessage: The dwarves have delved too greedily and too deep.
+    HasRun: 0
+  - Name: Dwarven Refineries
+    Cost: 7632092
+    GoldPerSecond: 763209
+    UnlockThreshhold: 7000000
+    EnemyUnlockThreshold: 5
+    EnemyName: 
+    UnlockMessage: Refined Dwarves are more efficient... somehow.
+    EnemyUnlockMessage: The enemy monsters are angered.
+    HasRun: 0
+  - Name: Jewellery Thieves
+    Cost: 68688760
+    GoldPerSecond: 6868876
+    UnlockThreshhold: 60000000
+    EnemyUnlockThreshold: 10
+    EnemyName: 
+    UnlockMessage: Jewels you don't pay for = easy profit
+    EnemyUnlockMessage: The enemies despise you.
+    HasRun: 0
+  - Name: Alchemist
+    Cost: 618198800
+    GoldPerSecond: 61819876
+    UnlockThreshhold: 600000000
+    EnemyUnlockThreshold: 10
+    EnemyName: 
+    UnlockMessage: You have discovered the ancient arts of Alchemy.
+    EnemyUnlockMessage: The enemy ruler is jealous.
+    HasRun: 0
+  - Name: Ye Olde Banks
+    Cost: 5.563789e+9
+    GoldPerSecond: 556378900
+    UnlockThreshhold: 5000000000
+    EnemyUnlockThreshold: 15
+    EnemyName: 
+    UnlockMessage: Apparently credits cards are extremely profitable... for you.
+    EnemyUnlockMessage: The enemy monsters are angered.
+    HasRun: 0
+  - Name: Demanding Princesses
+    Cost: 5.00741e+10
+    GoldPerSecond: 5.0074097e+9
+    UnlockThreshhold: 50000000000
+    EnemyUnlockThreshold: 5
+    EnemyName: 
+    UnlockMessage: Robs other kingdoms with tributes.
+    EnemyUnlockMessage: The enemy monsters are learning from their losses.
+    HasRun: 0
+  - Name: Wizard
+    Cost: 4.506669e+11
+    GoldPerSecond: 4.5066686e+10
+    UnlockThreshhold: 450000000000
+    EnemyUnlockThreshold: 10
+    EnemyName: 
+    UnlockMessage: One-ups alchemy by turning air into gold. Bravo!
+    EnemyUnlockMessage: The enemies are upping their assault
+    HasRun: 0
+  - Name: Dragon
+    Cost: 4.056002e+12
+    GoldPerSecond: 4.056002e+11
+    UnlockThreshhold: 4000000000000
+    EnemyUnlockThreshold: 5
+    EnemyName: 
+    UnlockMessage: Hoards gold you can steal.
+    EnemyUnlockMessage: The enemy monsters are learning from their losses.
+    HasRun: 0
+  - Name: Electric Artists
+    Cost: 3.6504018e+13
+    GoldPerSecond: 3.6504019e+12
+    UnlockThreshhold: 30000000000000
+    EnemyUnlockThreshold: 15
+    EnemyName: 
+    UnlockMessage: The Electric Artists can suck every last penny out of their targets
+      using their magic Boxes of Looting
+    EnemyUnlockMessage: You... You've beaten all the content we managed to put in
+      the game! Congratulations!!! Please follow us to stay updated on further updates!
+    HasRun: 0
   Upgrades:
   - Name: meme 1
     Cost: 10
@@ -2125,7 +2221,7 @@ Prefab:
     - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
         type: 2}
       propertyPath: Enemies.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4266637151966832, guid: 425fe951a504aa94f85168fe7d8a35ee, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2190,6 +2286,12 @@ Prefab:
     - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
         type: 2}
       propertyPath: Enemies.Array.data[3].Prefab
+      value: 
+      objectReference: {fileID: 1321899991208732, guid: 535b712792a435f41b5fa269eb485818,
+        type: 2}
+    - target: {fileID: 114158154395762744, guid: 425fe951a504aa94f85168fe7d8a35ee,
+        type: 2}
+      propertyPath: Enemies.Array.data[4].Prefab
       value: 
       objectReference: {fileID: 1707501071617438, guid: a576ada6ea094a549ada8f14783b1720,
         type: 2}
