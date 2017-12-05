@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
         _factory = aiFactory;
     }
 
-    public void SpawnEnemy(GameObject enemyPrefabToSpawn)
+    public void SpawnEnemy(GameObject enemyPrefabToSpawn, int DamageIncrease)
     {
         var degrees = Random.Range(0, 361);
 
@@ -29,5 +29,6 @@ public class EnemySpawner : MonoBehaviour
         _factory.SpawnPos = new Vector3(x, 0, y);
         _factory.Rotation = Quaternion.identity;
         AIBase result = _factory.Create();
+        result.Damage += DamageIncrease;
     }
 }

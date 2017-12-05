@@ -133,9 +133,16 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
 
         foreach (ResourceButtonInfo btn in _resourceButtonCounters.Keys)
         {
-            btn.Amount
-                .Where(x => x >= (int)btn.Info.EnemyUnlockThreshold && !_manager.GetEnemy(btn.Info.EnemyName).Spawnable)
-                .Subscribe(x => _manager.GetEnemy(btn.Info.EnemyName).Spawnable = true);
+            if (btn.Info.HasNewEnemyType)
+            {
+                btn.Amount
+                    .Where(x => x >= (int)btn.Info.EnemyUnlockThreshold && !_manager.GetEnemy(btn.Info.EnemyName).Spawnable)
+                    .Subscribe(x => _manager.GetEnemy(btn.Info.EnemyName).Spawnable = true);
+            }
+            else
+            {
+                _manager.DamageIncrease += 2;
+            }
             _ui.ShowMessage(btn.Info.EnemyUnlockMessage);
         }
 

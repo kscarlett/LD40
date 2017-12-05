@@ -16,5 +16,6 @@ public class ResourceCollectorInfo
     public string UnlockMessage;
     public string EnemyUnlockMessage;
     public bool HasRun = false;
+    public bool HasNewEnemyType;
 }
 

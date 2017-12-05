@@ -140,7 +140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.16444443}
   m_AnchorMax: {x: 0.5, y: 0.16444443}
-  m_AnchoredPosition: {x: -5, y: -0.3999939}
+  m_AnchoredPosition: {x: -5, y: -0.4000244}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &58778185
@@ -1483,6 +1483,7 @@ MonoBehaviour:
     UnlockMessage: You can hire filthy peasants to pick up filth for you.
     EnemyUnlockMessage: You seem to have angered the peasants!
     HasRun: 0
+    HasNewEnemyType: 1
   - Name: Terribad Merchants
     Cost: 23
     GoldPerSecond: 3
@@ -1501,6 +1502,7 @@ MonoBehaviour:
     UnlockMessage: There's gold to be found in the mines.
     EnemyUnlockMessage: Some nearby knights have heard of your newfound wealth.
     HasRun: 0
+    HasNewEnemyType: 1
   - Name: Criminal Labour
     Cost: 1172
     GoldPerSecond: 117
@@ -1510,6 +1512,7 @@ MonoBehaviour:
     UnlockMessage: You force criminals to work in your mines.
     EnemyUnlockMessage: The enemies grow stronger and stronger.
     HasRun: 0
+    HasNewEnemyType: 1
   - Name: Shaft Mines
     Cost: 10478
     GoldPerSecond: 1050

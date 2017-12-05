@@ -17,8 +17,9 @@ public class EnemyManager : MonoBehaviour
     private float _totalChance;
     private EnemySpawner _spawner;
     private DateTimeOffset _lastAdded;
+    public int DamageIncrease;
 
-	void Start ()
+    void Start ()
 	{
 	    _spawner = GetComponent<EnemySpawner>();
 
@@ -61,7 +62,7 @@ public class EnemyManager : MonoBehaviour
 
             if (r < 0)
             {
-                _spawner.SpawnEnemy(enemy.Prefab);
+                _spawner.SpawnEnemy(enemy.Prefab, DamageIncrease);
                 break;
             }
         }
