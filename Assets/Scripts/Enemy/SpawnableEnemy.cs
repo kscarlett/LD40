@@ -4,6 +4,7 @@ using UnityEngine;
 [Serializable]
 public class SpawnableEnemy
 {
-    public GameObject _prefab;
-    public float _spawnChance = 0;
+    public bool Spawnable = false;
+    public GameObject Prefab;
+    public float SpawnChance = 0;
 }

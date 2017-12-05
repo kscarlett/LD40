@@ -11,6 +11,8 @@ public class ResourceCollectorInfo
     public float Cost;
     public float GoldPerSecond;
     public ulong UnlockThreshhold;
+    public ulong EnemyUnlockThreshold;
+    public string EnemyName;
     public string UnlockMessage;
     public string EnemyUnlockMessage;
     public bool HasRun = false;
