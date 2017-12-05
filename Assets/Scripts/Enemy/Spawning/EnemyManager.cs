@@ -22,7 +22,6 @@ public class EnemyManager : MonoBehaviour
     void Start ()
 	{
 	    _spawner = GetComponent<EnemySpawner>();
-
 	    _lastAdded = DateTimeOffset.Now;
 
 	    this.UpdateAsObservable()
