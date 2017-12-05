@@ -10,13 +10,13 @@ using Zenject;
 [RequireComponent(typeof(NavMeshAgent), typeof(Collider))]
 public class AIBase : MonoBehaviour, IDamageable
 {
-
+    public ReactiveProperty<bool> UnderAttack { get; set; }
     [SerializeField] private bool _animate;
 
     private CastleBehaviour _castle;
     private Transform _targetTransform;
 
-    private GameObject _currentEnemy;
+    public GameObject CurrentEnemy;
     private NavMeshAgent _nav;
     private Animator _anim;
     private DateTimeOffset _lastAdded;
@@ -34,7 +34,9 @@ public class AIBase : MonoBehaviour, IDamageable
 
     void Start()
     {
+        UnderAttack = new ReactiveProperty<bool>();
         _lastAdded = DateTimeOffset.Now;
+
         if (IsEnemy)
         {
             _targetTransform = _castle.transform;
@@ -43,7 +45,20 @@ public class AIBase : MonoBehaviour, IDamageable
         {
             _targetTransform = EnemyTransform;
         }
-            
+
+        this.UpdateAsObservable().Where(x => CurrentEnemy != null && _targetTransform != CurrentEnemy.transform).Subscribe(
+            x =>
+            {
+                _targetTransform = CurrentEnemy.transform;
+                _anim.SetBool("Attacking", true);
+            });
+
+        this.UpdateAsObservable().Where(x => CurrentEnemy == null && _targetTransform != _castle.transform && IsEnemy).Subscribe(
+            x =>
+            {
+                _targetTransform = CurrentEnemy.transform;
+            });
+
         _health = new ReactiveProperty<int>(StartingHealth);
         if (_animate)
             _anim = GetComponentInChildren<Animator>();
@@ -67,7 +82,10 @@ public class AIBase : MonoBehaviour, IDamageable
 
     private void Pathfind()
     {
-        _nav.SetDestination(_targetTransform.position);
+        if (!(Vector3.Distance(transform.position, _targetTransform.position) <= 1))
+        {
+            _nav.SetDestination(_targetTransform.position);
+        }
     }
 
     private IEnumerator LateStart()
@@ -92,11 +110,15 @@ public class AIBase : MonoBehaviour, IDamageable
                 if (/*(IsEnemy && !coll.transform.CompareTag("Enemy")) || coll.transform.CompareTag("Enemy")*/ !tag.Equals(coll.transform.tag)) //This one fails
                 {
                     Debug.Log("Second test");
-                    if (_currentEnemy == null)
+                    if (CurrentEnemy == null)
                     {
                         Debug.Log("CurrentEnemy not null");
                         _anim.SetBool("Attacking", true);
-                        _currentEnemy = coll.gameObject;
+                        CurrentEnemy = coll.gameObject;
+                        if (damageable is AIBase)
+                        {
+                            ((AIBase) damageable).CurrentEnemy = gameObject;
+                        }
                     }
                 }
             }
@@ -117,7 +139,7 @@ public class AIBase : MonoBehaviour, IDamageable
     {
         while (_anim.GetBool("Attacking"))
         {
-            if (_currentEnemy == null)
+            if (CurrentEnemy == null)
             {
                 _anim.SetBool("Attacking", false);
             }
@@ -128,9 +150,9 @@ public class AIBase : MonoBehaviour, IDamageable
 
     public void ApplyDamage()
     {
-        if (_currentEnemy != null)
+        if (CurrentEnemy != null)
         {
-            _currentEnemy.GetComponent<IDamageable>().TakeDamage(Damage);
+            CurrentEnemy.GetComponent<IDamageable>().TakeDamage(Damage);
             StopCoroutine("CheckForCancel");
         }
     }

@@ -43,6 +43,7 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
 
     void Start()
     {
+        UnderAttack = new ReactiveProperty<bool>();
         _resourceButtonCounters = new Dictionary<ResourceButtonInfo, ReactiveProperty<ulong>>();
         _upgradeButtonCounters = new Dictionary<UpgradeButtonInfo, ReactiveProperty<ulong>>();
 
@@ -188,6 +189,8 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
             _upgradeButtonCounters[theBtn].Value += 1;
         }
     }
+
+    public ReactiveProperty<bool> UnderAttack { get; set; }
 
     public void TakeDamage(int damage)
     {
