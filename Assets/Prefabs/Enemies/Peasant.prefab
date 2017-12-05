@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 195180546793936496}
   - component: {fileID: 135001618438528062}
   m_Layer: 0
-  m_Name: Man
+  m_Name: Peasant
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animate: 1
+  CurrentEnemy: {fileID: 0}
   IsEnemy: 1
   Damage: 1
   StartingHealth: 2
