@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 114050604419115572}
   - component: {fileID: 136195238296100042}
   - component: {fileID: 195180546793936496}
+  - component: {fileID: 135001618438528062}
   m_Layer: 0
   m_Name: Man
   m_TagString: Enemy
@@ -385,6 +386,19 @@ MonoBehaviour:
   IsEnemy: 1
   Damage: 1
   StartingHealth: 2
+  EnemyTransform: {fileID: 0}
+--- !u!135 &135001618438528062
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321899991208732}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &136195238296100042
 CapsuleCollider:
   m_ObjectHideFlags: 1
