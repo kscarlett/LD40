@@ -135,7 +135,7 @@ public class CastleBehaviour : MonoBehaviour, IDamageable
         {
             btn.Amount
                 .Where(x => x >= (int)btn.Info.EnemyUnlockThreshold && !_manager.GetEnemy(btn.Info.EnemyName).Spawnable)
-                .Subscribe(x => _manager.EnableEnemy(btn.Info.EnemyName));
+                .Subscribe(x => _manager.GetEnemy(btn.Info.EnemyName).Spawnable = true);
             _ui.ShowMessage(btn.Info.EnemyUnlockMessage);
         }
 

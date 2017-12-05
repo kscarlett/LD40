@@ -34,13 +34,6 @@ public class EnemyManager : MonoBehaviour
 	        });
     }
 
-    public void EnableEnemy(string enemyName)
-    {
-        var enemy = Enemies.First(x => x.Prefab.name.ToUpper() == enemyName.ToUpper());
-        enemy.Spawnable = true;
-        enemy.SpawnChance = 5;
-    }
-
     public SpawnableEnemy GetEnemy(string enemyName)
     {
         return Enemies.First(x => x.Prefab.name.ToUpper() == enemyName.ToUpper());
