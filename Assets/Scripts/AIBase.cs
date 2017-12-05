@@ -97,7 +97,31 @@ public class AIBase : MonoBehaviour, IDamageable
         }
     }
 
-    void OnCollisionEnter(Collision coll)
+    //void OnCollisionEnter(Collision coll)
+    //{
+    //    IDamageable damageable = coll.transform.GetComponent<IDamageable>();
+    //    Debug.Log("Collision");
+    //    if (damageable != null)
+    //    {
+    //        Debug.Log("Damageable not null");
+    //        if (coll.transform.CompareTag("Player") || coll.transform.CompareTag("PlayerSoldier") || coll.transform.CompareTag("Enemy"))
+    //        {
+    //            Debug.Log("First Test");
+    //            if (/*(IsEnemy && !coll.transform.CompareTag("Enemy")) || coll.transform.CompareTag("Enemy")*/ !tag.Equals(coll.transform.tag)) //This one fails
+    //            {
+    //                Debug.Log("Second test");
+    //                if (_currentEnemy == null)
+    //                {
+    //                    Debug.Log("CurrentEnemy not null");
+    //                    _anim.SetBool("Attacking", true);
+    //                    _currentEnemy = coll.gameObject;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
+    void OnTriggerEnter(Collider coll)
     {
         IDamageable damageable = coll.transform.GetComponent<IDamageable>();
         Debug.Log("Collision");
@@ -107,7 +131,7 @@ public class AIBase : MonoBehaviour, IDamageable
             if (coll.transform.CompareTag("Player") || coll.transform.CompareTag("PlayerSoldier") || coll.transform.CompareTag("Enemy"))
             {
                 Debug.Log("First Test");
-                if (/*(IsEnemy && !coll.transform.CompareTag("Enemy")) || coll.transform.CompareTag("Enemy")*/ !tag.Equals(coll.transform.tag)) //This one fails
+                if (!CompareTag(coll.tag)) //This one fails
                 {
                     Debug.Log("Second test");
                     if (CurrentEnemy == null)
